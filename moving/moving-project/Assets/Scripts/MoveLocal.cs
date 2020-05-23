@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveLocal : MonoBehaviour
 {
     public Transform goal;
-    float speed = 0.5f;
+    public float speed = 0.5f;
     float accuracy = 1.0f;
     float rotationalSpeed = 0.5f;
     // Start is called before the first frame update
@@ -27,9 +27,9 @@ public class MoveLocal : MonoBehaviour
                                                    Quaternion.LookRotation(direction),
                                                    Time.deltaTime * rotationalSpeed);
 
-        if(Vector3.Distance(transform.position, lookAtGoal) > accuracy)
-        {
-            this.transform.Translate(0, 0, speed * Time.deltaTime);
-        }
+        //if(Vector3.Distance(transform.position, lookAtGoal) > accuracy)
+        //{
+        //    this.transform.Translate(0, 0, speed * Time.deltaTime);
+        //}
     }
 }
