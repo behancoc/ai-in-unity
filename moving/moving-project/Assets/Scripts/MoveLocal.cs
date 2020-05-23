@@ -7,7 +7,7 @@ public class MoveLocal : MonoBehaviour
     public Transform goal;
     float speed = 0.5f;
     float accuracy = 1.0f;
-
+    float rotationalSpeed = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,12 @@ public class MoveLocal : MonoBehaviour
             this.transform.position.y, 
             goal.position.z);
 
-        this.transform.LookAt(lookAtGoal);
+        Vector3 direction = lookAtGoal - this.transform.position;
+
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
+                                                   Quaternion.LookRotation(direction),
+                                                   Time.deltaTime * rotationalSpeed);
+
         if(Vector3.Distance(transform.position, lookAtGoal) > accuracy)
         {
             this.transform.Translate(0, 0, speed * Time.deltaTime);
