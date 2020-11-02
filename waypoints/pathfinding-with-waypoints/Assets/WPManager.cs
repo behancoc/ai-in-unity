@@ -21,13 +21,18 @@ public class WPManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Debug.Log("Start() method called!");
+
         foreach(GameObject wp in waypoints)
         {
+            Debug.Log("Adding nodes to graph");
             graph.AddNode(wp);
         }
 
         foreach(Link link in links)
         {
+            Debug.Log("Adding edges to graph");
             graph.AddEdge(link.node1, link.node2);
             if(link.dir == Link.direction.BI)
             {
